@@ -1,7 +1,9 @@
 import requests
 import json
 from pprint import pprint
+from tabulate import *
 import urllib3
+
 
 
 requests.packages.urllib3.disable_warnings()
@@ -18,13 +20,11 @@ response_json = resp.json()
 print('')
 numPersonas = response_json['number']
 pprint("Hay " + str(numPersonas) + ' personas en el espacio!!!')
-
+personas = response_json['people']
 pprint('Sus nombres son')
-pprint(response_json['people'][0]['name'])
-pprint(response_json['people'][1]['name'])
-pprint(response_json['people'][2]['name'])
-pprint(response_json['people'][3]['name'])
-pprint(response_json['people'][4]['name'])
-pprint(response_json['people'][5]['name'])
-print('')
+i=0
+while i < len(personas):
+    pprint(response_json['people'][i]['name'])
+    i=i+1
 
+print('')
